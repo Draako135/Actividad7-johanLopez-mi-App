@@ -71,8 +71,8 @@ h1 {
 }
 
 .blue .theme-toggle { /* Botón de cambio de tema */
-  background: #fff; /* Fondo */
-  color: #2563eb; /* Texto */
+  background: #b0eaa6; /* Fondo */
+  color: #000000; /* Texto */
 }
 
 /* Modo verde */
@@ -87,14 +87,14 @@ h1 {
 }
 
 .green .theme-toggle { /* Botón de cambio de tema */
-  background: #fff; /* Fondo */
-  color: #3feb25; /* Texto */
+  background: #efefb4; /* Fondo */
+  color: #323030; /* Texto */
 }
 
 /* Modo amarillo */
 .yellow {
   background-color: #bebe19; /* Color de fondo */
-  color: #fff; /* Color de texto */
+  color: #ffffff; /* Color de texto */
 }
 
 .yellow .container { /* Contenedor */
@@ -104,7 +104,7 @@ h1 {
 
 .yellow .theme-toggle { /* Botón de cambio de tema */
   background: #fff; /* Fondo */
-  color: #eeff00; /* Texto */
+  color: #000000; /* Texto */
 }
 
 
