@@ -11,7 +11,6 @@ body {
 /* Contenedor principal */
 .container {
   max-width: 100%;
-  margin: 0 auto;
   background: #fff;
   padding: 20px;
   border-radius: 12px;
@@ -19,16 +18,22 @@ body {
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Botón de cambio de tema */
+h1 {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  margin: 10;
+}
+
 .theme-toggle {
   background: #333;
   color: white;
   border: none;
-  padding: 10px 15px;
-  margin-bottom: 15px;
+  padding: 10px 10px;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
+  margin-left: 30px; 
 }
 
 .theme-toggle:hover { /* Efecto hover  para el botón modo claro*/
@@ -68,6 +73,38 @@ body {
 .blue .theme-toggle { /* Botón de cambio de tema */
   background: #fff; /* Fondo */
   color: #2563eb; /* Texto */
+}
+
+/* Modo verde */
+.green {
+  background-color: #2ac64f; /* Color de fondo */
+  color: #fff; /* Color de texto */
+}
+
+.green .container { /* Contenedor */
+  background: #206c56; /* Fondo */
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2); /* Sombra */
+}
+
+.green .theme-toggle { /* Botón de cambio de tema */
+  background: #fff; /* Fondo */
+  color: #3feb25; /* Texto */
+}
+
+/* Modo amarillo */
+.yellow {
+  background-color: #bebe19; /* Color de fondo */
+  color: #fff; /* Color de texto */
+}
+
+.yellow .container { /* Contenedor */
+  background: #a8b743; /* Fondo */
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2); /* Sombra */
+}
+
+.yellow .theme-toggle { /* Botón de cambio de tema */
+  background: #fff; /* Fondo */
+  color: #eeff00; /* Texto */
 }
 
 
@@ -155,6 +192,14 @@ ul {
   background: #3f598f;
   box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
 }
+.green .product-item { /* Modo verde para la lista de productos */
+  background: #bd6521;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+.yellow .product-item { /* Modo amarillo para la lista de productos */
+  background: #a12674;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
 
 
 /* Botones de acción */
@@ -237,6 +282,18 @@ ul {
   color: white; /* Texto */
 }
 
+.green .product-content input, .blue .product-content select {  /* Modo azul  para la lista de productos */ 
+  background: #8dea84; /* Fondo */
+  border-color: #7db50e; /* Borde */
+  color: white; /* Texto */
+}
+
+.yellow .product-content input, .blue .product-content select {  /* Modo azul  para la lista de productos */ 
+  background: #ebd848; /* Fondo */
+  border-color: #eaff00; /* Borde */
+  color: white; /* Texto */
+}
+
 
 input { /* Estilos para los inputs */
   width: 100%; /* Asegura que el input se ajuste al contenedor */
@@ -312,6 +369,31 @@ input { /* Estilos para los inputs */
   background: #ddd;
 }
 
+/* Modo verde */
+.green .checkbox-container input[type="checkbox"] { /* Modo verde para el checkbox */
+  background: #666666;
+}
+
+.green .checkbox-container input[type="checkbox"]:checked { /* Modo verde para el checkbox checked*/
+  background: #ec6e00;
+}
+
+.green .checkbox-container input[type="checkbox"]::before { /* Modo verde para el checkbox before */
+  background: #ddd;
+}
+
+/* Modo azul */
+.yellow .checkbox-container input[type="checkbox"] { /* Modo amarillo para el checkbox */
+  background: #666666;
+}
+
+.yellow .checkbox-container input[type="checkbox"]:checked { /* Modo amarillo para el checkbox checked*/
+  background: #b60478;
+}
+
+.ywllow .checkbox-container input[type="checkbox"]::before { /* Modo amarillo para el checkbox before */
+  background: #ddd;
+}
 
 /* Contenedor de filtros: alineado al centro */
 .filter-container {

@@ -43,23 +43,26 @@ const App = () => { // Componente funcional App
   };
 
   const toggleTheme = () => { // Función que cambia el tema de la aplicación
-    const newTheme = theme === "light" ? "dark" : theme === "dark" ? "blue" : "light"; // Cambia el tema actual al siguiente en el ciclo (light -> dark -> blue -> light) 
+    const newTheme = theme === "light" ? "dark" : theme === "dark" ? "blue" : theme === "blue" ? "green" : theme === "green" ? "yellow":"light"; // Cambia el tema actual al siguiente en el ciclo (light -> dark -> blue -> light) 
     document.body.classList.remove(theme);
     document.body.classList.add(newTheme);
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
   };
 
-  return ( // Renderiza el formulario y la lista de productos
+  return (
     <div className="container">
-      <button className="theme-toggle" onClick={toggleTheme}>
-        {theme === "light" ? "🌙 Modo Oscuro" : theme === "dark" ? "🔵 Modo Azul" : "☀ Modo Claros"} 
-      </button>
-      <h1>Inventario de Equipos de la USTA</h1>
+      <h1>
+        Inventario de Equipos de la USTA
+        <button className="theme-toggle" onClick={toggleTheme}>
+          {theme === "light" ? "🌙 Modo Oscuro" : theme === "dark" ? "🔵 Modo Azul" : theme === "blue" ? "🟢 Modo Verde" :theme === "green" ? "🟡 Modo Amarillo" : "☀ Modo claro" }
+        </button>
+      </h1>
       <ProductForm onAdd={addProduct} />
       <ProductList products={products} onDelete={deleteProduct} onEdit={editProduct} />
     </div>
   );
+
 };
 
 export default App;
