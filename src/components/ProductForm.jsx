@@ -25,7 +25,7 @@ const ProductForm = ({ onAdd }) => {
         category,
         categoryP,
         status: isUsed ? "Usado" : "Nuevo",
-        utility: isUtility ? "Bueno" : "Malo",
+        utility: isUtility ? "Bueno" : "Averiado",
         amount: amount,
         entryDate: entryDate 
       });
@@ -86,10 +86,11 @@ const ProductForm = ({ onAdd }) => {
           checked={isUtility}
           onChange={() => setIsUtility(!isUtility)}
         />
-        Condición: {isUtility ? "Bueno" : "Malo"}
+        Condición: {isUtility ? "Bueno" : "Averiado"}
       </label>
 
       {/* Input para la cantidad de equipos */}
+      <label className="checkbox-container">
       <div className="input-container">
         <input
           type="number"
@@ -98,15 +99,17 @@ const ProductForm = ({ onAdd }) => {
           placeholder="Cantidad de equipos"
         />
       </div>
-  
-      <label>Fecha de ingreso del equipo:</label>
-      <input
+      </label>
+      <label className="checkbox-container">
+      <input  className="input-container"
         type="date"
         value={entryDate}
         onChange={(e) => setEntryDate(e.target.value)}
         max={new Date().toISOString().split("T")[0]} // Restringe fechas futuras
         required
+        placeholder="Fecha de ingreso del equipo"
       />
+      </label>
       <button type="submit">Agregar</button>
     </form>
   );

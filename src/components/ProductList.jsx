@@ -8,12 +8,10 @@ const ProductList = ({ products, onDelete, onEdit }) => {
   const [editCategoryP, setEditCategoryP] = useState("");
   const [editUtility, setEditUtility] = useState(true);
   const [editAmount, setEditAmount] = useState(0);
-
-  const [editEntryDate, setEditEntryDate] = useState("");
+  const [editEntryDate, setEditEntryDate] = useState(""); // Estado para la fecha de ingreso
   const [searchTerm, setSearchTerm] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -29,7 +27,7 @@ const ProductList = ({ products, onDelete, onEdit }) => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [editIndex]); // Se ejecuta cuando editIndex cambia
+  }, [editIndex]);
 
   const handleEdit = (index, product) => {
     setEditIndex(index);
@@ -39,9 +37,10 @@ const ProductList = ({ products, onDelete, onEdit }) => {
     setEditCategoryP(product.categoryP);
     setEditUtility(product.utility === "Bueno");
     setEditAmount(product.amount);
-    setEditEntryDate(product.entryDate);
+    setEditEntryDate(product.entryDate); // Asegúrate de que la fecha se establezca correctamente
   };
-  const handleSave = (index) => { // Función que maneja el guardado de la edición de un producto
+
+  const handleSave = (index) => {
     const today = new Date().toISOString().split("T")[0];
     if (editEntryDate > today) {
       alert("La fecha de ingreso no puede ser futura.");
@@ -53,9 +52,9 @@ const ProductList = ({ products, onDelete, onEdit }) => {
         category: editCategory,
         categoryP: editCategoryP,
         status: editStatus ? "Usado" : "Nuevo",
-        utility: editUtility ? "Bueno" : "Malo",
+        utility: editUtility ? "Bueno" : "Averiado",
         amount: editAmount,
-        entryDate: editEntryDate
+        entryDate: editEntryDate // Asegúrate de que la fecha se guarde correctamente
       });
       setEditIndex(null);
     }
@@ -69,18 +68,18 @@ const ProductList = ({ products, onDelete, onEdit }) => {
     setEditCategoryP("");
     setEditUtility(false);
     setEditAmount(0);
-    setEditEntryDate(new Date());
+    setEditEntryDate(""); // Reinicia la fecha a una cadena vacía
   };
 
-  const handleClearSearch = () => { // Función que maneja la limpieza de la búsqueda
+  const handleClearSearch = () => {
     setSearchTerm("");
     setStartDate("");
     setEndDate("");
   };
 
-  const filteredProducts = products.filter((product) => { // Filtra los productos según el término de búsqueda y el rango de fechas
+  const filteredProducts = products.filter((product) => {
     const matchesSearch =
-      product.name.toLowerCase().includes(searchTerm.toLowerCase()) || // Compara el nombre del producto con el término de búsqueda
+      product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
       product.status.toLowerCase().includes(searchTerm.toLowerCase());
 
@@ -94,8 +93,7 @@ const ProductList = ({ products, onDelete, onEdit }) => {
   return (
     <div>
       <h2>Lista de Productos</h2>
-      {/* Barra de búsqueda y filtro de fechas en una sola línea */}
-      <div className="filter-container">   {/* Contenedor de la barra de búsqueda y filtro de fechas */}
+      <div className="filter-container">
         <input
           type="text"
           placeholder="Buscar producto..."
@@ -118,7 +116,7 @@ const ProductList = ({ products, onDelete, onEdit }) => {
           className="date-filter"
         />
         <button onClick={handleClearSearch} className="clear-btn">Limpiar</button>
-      </div> {/* Fin del contenedor de la barra de búsqueda y filtro de fechas */}
+      </div>
 
       <ul>
         {filteredProducts.map((product, index) => (
@@ -146,7 +144,6 @@ const ProductList = ({ products, onDelete, onEdit }) => {
                     </optgroup>
                   </select>
 
-                  {/* Checkbox para editar estado del equipo */}
                   <label className="checkbox-container">
                     <input
                       type="checkbox"
@@ -167,14 +164,13 @@ const ProductList = ({ products, onDelete, onEdit }) => {
                     <option value="Audifonos">Audifonos</option>
                   </select>
 
-
                   <label className="checkbox-container">
                     <input
                       type="checkbox"
                       checked={editUtility}
                       onChange={() => setEditUtility(!editUtility)}
                     />
-                    Condición: {editUtility ? "Bueno" : "Malo"}
+                    Condición: {editUtility ? "Bueno" : "Averiado"}
                   </label>
                   <div className="amount-container">
                     <input
@@ -184,6 +180,15 @@ const ProductList = ({ products, onDelete, onEdit }) => {
                       placeholder="Cantidad de equipos"
                     />
                   </div>
+
+                  <label className="checkbox-container">
+                  <input
+                    type="date"
+                    value={editEntryDate}
+                    onChange={(e) => setEditEntryDate(e.target.value)}
+                    max={new Date().toISOString().split("T")[0]}
+                  />
+                  </label>
                 </>
               ) : (
                 <span>

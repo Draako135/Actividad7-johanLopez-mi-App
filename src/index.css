@@ -72,22 +72,28 @@ body {
 
 
 
-/* Formulario de creación */
+/* Estilos generales para el formulario */
 form {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px; 
+  justify-content: center; /* Centra los elementos */
 }
 
-input, select { /* Estilos para los inputs y selects del formulario */
-  width: 100%;
+/* Contenedor de cada input */
+.input-container {
+  flex:  10%; 
+}
+
+/* Estilos para los inputs y selects del formulario */
+input, select {
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 16px;
   background: #f9f9f9;
-  transition: 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
 }
 
 input:focus, select:focus { /* Efecto focus para los inputs y selects */
